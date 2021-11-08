@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import Test from './components/Test'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         >
           Learn React
         </a>
+        <Test></Test>
       </header>
     </div>
   );
