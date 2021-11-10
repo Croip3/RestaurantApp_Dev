@@ -6,3 +6,7 @@
 - npm install
 - npm init
 - npm install firebase
+
+## Authentication 
+- Firebase Account
+- Firebase E-Mail/Password Authentication aktivieren 
