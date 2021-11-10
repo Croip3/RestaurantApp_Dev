@@ -10,3 +10,4 @@
 ## Authentication 
 - Firebase Account
 - Firebase E-Mail/Password Authentication aktivieren 
+- firebase_conifig.js eigene Daten eintragen
