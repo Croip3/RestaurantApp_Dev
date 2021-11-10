@@ -3,4 +3,6 @@
 ## First steps
 - git clone
 - cd in RestaurantApp_Dev
+- npm install
 - npm init
+- npm install firebase
