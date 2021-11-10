@@ -3,6 +3,7 @@ import './App.css';
 import Test from './components/Test'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Login from './components/Login'
 
 function App() {
   return (
@@ -10,9 +11,12 @@ function App() {
       <div className="App">
         HOME
           <Routes>
-            <Route path="/" exact element={<Test /> } />
-            <Route path="/test" exact element={<Test />}></Route>
+            <Route path="/" exact element={<Test /> } /> 
+            <Route path="/test" exact element={<Test />}></Route> 
           </Routes>
+          <Login>
+      
+          </Login>
       </div>
     </Router>
   );
