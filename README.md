@@ -1,6 +1,8 @@
 # README Restaurant_Dev App
 
 ## First steps
+
 - git clone
-- cd in RestaurantApp_Dev
-- npm init
+- cd restaurant_dev
+- npm install
+- npm start
