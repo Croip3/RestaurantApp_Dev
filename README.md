@@ -15,4 +15,4 @@
 ## Noch zu lösen
 - Bestätigung per Mail, damit keine Quatsch E-Mails sich anmelden können
 - Schutz gegen Spam
-- Bedingungen für Anmeldungen festlegen (zur Zeit stürzt es ab, wenn es einen Fehler gibt)
+- Bedingungen für Anmeldungen festlegen und diese mit Popup anzeigen, wenn etwas falsch eingegeben wird
