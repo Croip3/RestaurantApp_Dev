@@ -11,4 +11,21 @@ const app = firebase.initializeApp({
 })
 
 export const auth = app.auth()
-export default app
+export default app 
+
+
+/* import { getAuth } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCdwFCmyRoWStI0roYhMzjZO2CF38o_TPk",
+  authDomain: "auth-development-54560.firebaseapp.com",
+  projectId: "auth-development-54560",
+  storageBucket: "auth-development-54560.appspot.com",
+  messagingSenderId: "938377624082",
+  appId: "1:938377624082:web:9b3cd50db3dab4ed7136cb"
+};
+
+
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app); */

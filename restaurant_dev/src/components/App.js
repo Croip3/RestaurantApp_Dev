@@ -1,11 +1,11 @@
-import React , {Fragment} from "react"
+import React from "react"
 import Signup from "./Signup";
 import Dashboard from "./Dashboard";
 import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";
 import { Container } from "react-bootstrap";
 import { AuthProvider } from "../contexts/AuthContext";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
 
 function App() {
   return ( 
@@ -14,15 +14,18 @@ function App() {
   style={{ minHeight: "100vh" }}>
     <div className="w-100" style={{ maxWidth: "400px" }}>
     <Router>
-    {/* <Fragment> */}
+     
           <AuthProvider>
             <Routes>
-              <Route exact path="/" element={<Dashboard/>} />
+              <Route path="/" element={<Navigate to="login"/>} />
               <Route path="/signup" element={<Signup/>} />
               <Route path="/login" element={<Login/>} />
+              <Route path="/dashboard"  element={
+              <Dashboard />
+          } />
             </Routes>
           </AuthProvider>
-      {/* </Fragment> */}
+     
         </Router>
     </div>
   </Container>
