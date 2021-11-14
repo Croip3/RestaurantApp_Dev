@@ -1,4 +1,5 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Card } from "react-bootstrap";
 
 const restaurants = [
@@ -34,8 +35,15 @@ const restaurants = [
 ];
 
 const restaurantList = restaurants.map((r) => (
-    <Card className="mt-2" key={r.id}>
-        {r.name}
+    <Card className="mt-2 text-left" key={r.id}>
+        <Card.Body>
+            <Card.Title className="text-left">{r.name}</Card.Title>
+            <Card.Text>rating</Card.Text>
+            <Card.Text>
+                {r.postalCode}
+                {r.city} <br /> {r.street}
+            </Card.Text>
+        </Card.Body>
     </Card>
 ));
 
