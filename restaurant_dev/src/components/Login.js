@@ -5,7 +5,9 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     onAuthStateChanged,
-    signOut
+    signOut,
+    updateCurrentUser,
+    updatePassword,
 }
     from 'firebase/auth';
 import { auth } from './firebase_config';
@@ -15,6 +17,7 @@ const Login = () => {
     const [registerPassword, setRegisterPassword] = useState('');
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
+    //const [newPassword, setNewPassword] = useState('');
 
     const [user, setUser] = useState({});
 
@@ -50,11 +53,25 @@ const Login = () => {
 
     }
 
+    const neuesPasswort = async () => {
+        try {
+            updatePassword(
+                auth.currentUser,
+                loginPassword,
+            );
+            console.log(user);
+        } catch (error) {
+            console.log(error.message);
+        }
+
+    }
+
     const logOut = async () => {
 
         await signOut(auth);
 
     };
+
 
     return (
         <div>
@@ -72,6 +89,8 @@ const Login = () => {
                 }}
             />
             <Button variant="primary" onClick={register}>Register</Button>
+
+
             <h1>Login</h1>
             <input type="text"
                 placeholder="E-Mail"
@@ -80,15 +99,32 @@ const Login = () => {
                 }} />
             <input type="text"
                 placeholder="Password"
-                placeholder="Password"
                 onChange={(event) => {
                     setLoginPassword(event.target.value);
                 }} />
             <Button variant="primary" onClick={login}>Login</Button>
-            <h1>User logged in:</h1>
-            {user?.email}
 
+            <h1>Neues Passwort</h1>
+            <input type="text"
+                placeholder="E-Mail"
+                onChange={(event) => {
+                    setLoginEmail(event.target.value);
+                }} />
+            <input type="text"
+                placeholder="New Password"
+                onChange={(event) => {
+                    setLoginPassword(event.target.value);
+                }} />
+            <Button variant="primary" onClick={neuesPasswort}>Neues Passwort</Button>
+
+            <br></br>
+
+
+            <br></br>
             <Button onClick={logOut}>Sign out</Button>
+
+            <h1>User logged in: </h1>
+            {user?.email}
         </div>
     )
 }
