@@ -15,3 +15,4 @@
 - Bestätigung per Mail, damit keine Quatsch E-Mails sich anmelden können
 - Schutz gegen Spam
 - Bedingungen für Anmeldungen festlegen und diese mit Popup anzeigen, wenn etwas falsch eingegeben wird
+- Ein kann, kein Muss: 2 Flows einmal mit Verification und einmal Account durch E-Mail 
