@@ -6,14 +6,25 @@ import {
     signInWithEmailAndPassword,
     onAuthStateChanged,
     signOut,
+    updateCurrentUser,
     updatePassword,
+    sendEmailVerification,
+    applyActionCode,
+    sendSignInLinkToEmail,
+    getAuth,
+    isSignInWithEmailLink,
+    signInWithEmailLink,
+    actionCodeSettings
 }
     from 'firebase/auth';
 import { auth } from './firebase_config';
-const Login = () => {
+const Register = () => {
 
+    const [registerEmail, setRegisterEmail] = useState('');
+    const [registerPassword, setRegisterPassword] = useState('');
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
+    //const [newPassword, setNewPassword] = useState('');
 
     const [user, setUser] = useState({});
 
@@ -22,9 +33,9 @@ const Login = () => {
     })
 
     const actionCodeSettings = {
-        // URL gibt an, wo der Link in der E-Mail hinführt
-        // URL muss in der Firebase Console eingetragen werden
-        url: 'http://localhost:3000/',
+        // URL you want to redirect back to. The domain (www.example.com) for this
+        // URL must be in the authorized domains list in the Firebase Console.
+        url: 'http://localhost:3000',
         // This must be true.
         handleCodeInApp: true,
         /*iOS: {
@@ -39,17 +50,12 @@ const Login = () => {
     */};
 
 
-
-
-
-
-
-    const login = async () => {
+    const register = async () => {
         try {
-            const user = await signInWithEmailAndPassword(
+            const user = await createUserWithEmailAndPassword(
                 auth,
-                loginEmail,
-                loginPassword
+                registerEmail,
+                registerPassword
             );
             console.log(user);
         } catch (error) {
@@ -57,7 +63,6 @@ const Login = () => {
         }
 
     }
-
 
     const logOut = async () => {
 
@@ -67,21 +72,27 @@ const Login = () => {
 
 
     return (
-        <div className="App">
-            <h1>Login</h1>
+        <div>
+
+
+            <h1>Register</h1>
             <input type="text"
                 placeholder="E-Mail"
                 onChange={(event) => {
-                    setLoginEmail(event.target.value);
+                    setRegisterEmail(event.target.value);
                 }} />
+
             <input type="text"
                 placeholder="Password"
                 onChange={(event) => {
-                    setLoginPassword(event.target.value);
-                }} />
-            <Button variant="primary" onClick={login}>Login</Button>
+                    setRegisterPassword(event.target.value);
+                }}
+            />
+            <Button variant="primary" onClick={register}>Register</Button>
 
-            <br></br>
+
+
+
 
 
             <br></br>
@@ -93,4 +104,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Register

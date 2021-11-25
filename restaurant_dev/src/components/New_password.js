@@ -1,30 +1,34 @@
 import React from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate, Link } from "react-router-dom"
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button'
 import {
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
     onAuthStateChanged,
-    signOut,
     updatePassword,
+    getAuth,
 }
     from 'firebase/auth';
 import { auth } from './firebase_config';
-const Login = () => {
 
+const New_password = () => {
+
+    const [registerEmail, setRegisterEmail] = useState('');
+    const [registerPassword, setRegisterPassword] = useState('');
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
 
     const [user, setUser] = useState({});
+
+    const auth = getAuth();
 
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
     })
 
     const actionCodeSettings = {
-        // URL gibt an, wo der Link in der E-Mail hinführt
-        // URL muss in der Firebase Console eingetragen werden
-        url: 'http://localhost:3000/',
+        // URL you want to redirect back to. The domain (www.example.com) for this
+        // URL must be in the authorized domains list in the Firebase Console.
+        url: 'http://localhost:3000',
         // This must be true.
         handleCodeInApp: true,
         /*iOS: {
@@ -39,58 +43,53 @@ const Login = () => {
     */};
 
 
+    const refresh = async () => {
+        window.location.reload();
+    }
 
 
-
-
-
-    const login = async () => {
+    const neuesPasswort = async () => {
         try {
-            const user = await signInWithEmailAndPassword(
-                auth,
-                loginEmail,
-                loginPassword
+            window.localStorage.removeItem('emailForSignIn');
+            updatePassword(
+                auth.currentUser,
+                loginPassword,
             );
             console.log(user);
+            window.localStorage.removeItem('emailForSignIn');
+
         } catch (error) {
             console.log(error.message);
         }
 
     }
 
-
-    const logOut = async () => {
-
-        await signOut(auth);
-
-    };
-
-
     return (
         <div className="App">
-            <h1>Login</h1>
+
+            <h1> Neues Passwort </h1>
             <input type="text"
                 placeholder="E-Mail"
                 onChange={(event) => {
                     setLoginEmail(event.target.value);
                 }} />
             <input type="text"
-                placeholder="Password"
+                placeholder="New Password"
                 onChange={(event) => {
                     setLoginPassword(event.target.value);
                 }} />
-            <Button variant="primary" onClick={login}>Login</Button>
-
-            <br></br>
+            <Button variant="primary" onClick={neuesPasswort, refresh}>Neues Passwort</Button>
 
 
             <br></br>
-            <Button onClick={logOut}>Sign out</Button>
+
 
             <h1>User logged in: </h1>
             {user?.email}
         </div>
+
+
     )
 }
 
-export default Login
+export default New_password
