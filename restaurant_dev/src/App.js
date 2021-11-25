@@ -17,6 +17,8 @@ const auth = getAuth();
 
 if (isSignInWithEmailLink(auth, window.location.href)) {
 
+
+
   let email = window.localStorage.getItem('emailForSignIn');
   if (!email) {
 
@@ -24,6 +26,10 @@ if (isSignInWithEmailLink(auth, window.location.href)) {
     // attacks, ask the user to provide the associated email again. For example:
     email = window.prompt('Please provide your email for confirmation');
   }
+  if (email) {
+    email = window.location.href = 'http://localhost:3000/components/Landing.js';
+  }
+
   // The client SDK will parse the code from the link for you.
   signInWithEmailLink(auth, email, window.location.href)
     .then((result) => {
