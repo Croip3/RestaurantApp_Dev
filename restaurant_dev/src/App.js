@@ -12,8 +12,6 @@ const auth = getAuth();
 
 if (isSignInWithEmailLink(auth, window.location.href)) {
 
-
-
   let email = window.localStorage.getItem('emailForSignIn');
   if (!email) {
 
@@ -22,20 +20,15 @@ if (isSignInWithEmailLink(auth, window.location.href)) {
     email = window.prompt('Please provide your email for confirmation');
   }
 
-
-
   // The client SDK will parse the code from the link for you.
   signInWithEmailLink(auth, email, window.location.href)
     .then((result) => {
       // Clear email from storage.
-
       // You can access the new user via result.user
       // Additional user info profile not available via:
       // result.additionalUserInfo.profile == null
       // You can check if the user is new or existing:
       // result.additionalUserInfo.isNewUser
-
-
     })
     .catch((error) => {
       // Some error occurred, you can inspect the code: error.code
@@ -50,38 +43,10 @@ function App() {
 
   return (
     <div className="App">
-
-      <Router>
-        <Routes>
-
-          <Route path="components/Login.js" element={<Login />} />
-          <Route path="components/Register.js" element={<Register />} />
-          <Route path="components/Mail.js" element={<Mail />} />
-          <Route path="components/New_password.js" element={<New_password />} />
-
-
-        </Routes>
-        <div cmssName="w-100 text-center mt-2">
-          Möchten Sie sich registrieren? <Link to="components/Register.js">Registrieren</Link>
-        </div>
-
-
-        <div className="w-100 text-center mt-2">
-          Sie haben bereits ein Konto? <Link to="components/Login.js">Einloggen</Link>
-        </div>
-
-        <div className="w-100 text-center mt-2">
-          Registrierung per Mail  <Link to="components/Mail.js">Per Mail</Link>
-        </div>
-
-        <div className="w-100 text-center mt-2">
-          Neues Passwort  <Link to="components/New_password.js">Neu</Link>
-        </div>
-
-
-      </Router>
-
-
+      {/***************
+*****************
+*****************
+  */}
     </div >
 
   );

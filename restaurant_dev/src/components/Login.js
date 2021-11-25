@@ -21,29 +21,6 @@ const Login = () => {
         setUser(currentUser);
     })
 
-    const actionCodeSettings = {
-        // URL gibt an, wo der Link in der E-Mail hinführt
-        // URL muss in der Firebase Console eingetragen werden
-        url: 'http://localhost:3000/',
-        // This must be true.
-        handleCodeInApp: true,
-        /*iOS: {
-            bundleId: 'com.google.ios'
-        },
-        android: {
-            packageName: 'com.google.android',
-            installApp: true,
-            minimumVersion: '12'
-        },
-        dynamicLinkDomain: 'google.page.link'
-    */};
-
-
-
-
-
-
-
     const login = async () => {
         try {
             const user = await signInWithEmailAndPassword(
@@ -58,13 +35,11 @@ const Login = () => {
 
     }
 
-
     const logOut = async () => {
 
         await signOut(auth);
 
     };
-
 
     return (
         <div className="App">

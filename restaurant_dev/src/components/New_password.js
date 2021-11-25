@@ -25,24 +25,6 @@ const New_password = () => {
         setUser(currentUser);
     })
 
-    const actionCodeSettings = {
-        // URL you want to redirect back to. The domain (www.example.com) for this
-        // URL must be in the authorized domains list in the Firebase Console.
-        url: 'http://localhost:3000',
-        // This must be true.
-        handleCodeInApp: true,
-        /*iOS: {
-            bundleId: 'com.google.ios'
-        },
-        android: {
-            packageName: 'com.google.android',
-            installApp: true,
-            minimumVersion: '12'
-        },
-        dynamicLinkDomain: 'google.page.link'
-    */};
-
-
     const refresh = async () => {
         window.location.reload();
     }
@@ -50,7 +32,7 @@ const New_password = () => {
 
     const neuesPasswort = async () => {
         try {
-            window.localStorage.removeItem('emailForSignIn');
+
             updatePassword(
                 auth.currentUser,
                 loginPassword,
