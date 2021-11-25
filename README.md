@@ -1,6 +1,7 @@
 # README Restaurant_Dev App
 
 ## First steps
+- https://github.com/Croip3/RestaurantApp_Dev.git
 - git clone
 - cd in RestaurantApp_Dev
 - npm install
