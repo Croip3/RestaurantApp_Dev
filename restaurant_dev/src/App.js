@@ -1,17 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import Test from './components/Test'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Routes, Route, Navigate, Link } from "react-router-dom"
 import Login from './components/Login';
-//import PrivateRoute from "./PrivateRoute";
-import { Container } from "react-bootstrap";
-import Unterordner from './components/Unterordner';
 import React, { useRef, useState } from "react"
 import Register from './components/Register';
-import Landing from './components/Landing';
 import { getAuth, isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth";
-
+import Mail from './components/Mail';
+import New_password from './components/New_password';
 
 const auth = getAuth();
 
@@ -26,20 +21,20 @@ if (isSignInWithEmailLink(auth, window.location.href)) {
     // attacks, ask the user to provide the associated email again. For example:
     email = window.prompt('Please provide your email for confirmation');
   }
-  if (email) {
-    email = window.location.href = 'http://localhost:3000/components/Landing.js';
-  }
+
+
 
   // The client SDK will parse the code from the link for you.
   signInWithEmailLink(auth, email, window.location.href)
     .then((result) => {
       // Clear email from storage.
-      window.localStorage.removeItem('emailForSignIn');
+
       // You can access the new user via result.user
       // Additional user info profile not available via:
       // result.additionalUserInfo.profile == null
       // You can check if the user is new or existing:
       // result.additionalUserInfo.isNewUser
+
 
     })
     .catch((error) => {
@@ -48,53 +43,47 @@ if (isSignInWithEmailLink(auth, window.location.href)) {
     });
 }
 
+
 function App() {
 
+
+
   return (
-
-
-
-
-
-
-
-    <div className="App" >
-
-
-
-
-
-
+    <div className="App">
 
       <Router>
         <Routes>
 
-          <Route path="components/Unterordner.js" element={<Unterordner />} />
           <Route path="components/Login.js" element={<Login />} />
           <Route path="components/Register.js" element={<Register />} />
-          <Route path="components/Landing.js" element={<Landing />} />
+          <Route path="components/Mail.js" element={<Mail />} />
+          <Route path="components/New_password.js" element={<New_password />} />
 
 
         </Routes>
-        <div className="w-100 text-center mt-2">
-          Registrieren? <Link to="components/Register.js">Registrieren</Link>
+        <div cmssName="w-100 text-center mt-2">
+          Möchten Sie sich registrieren? <Link to="components/Register.js">Registrieren</Link>
         </div>
 
 
         <div className="w-100 text-center mt-2">
-          Sie haben bereits ein Konto? <Link to="components/Unterordner.js">Einloggen</Link>
+          Sie haben bereits ein Konto? <Link to="components/Login.js">Einloggen</Link>
         </div>
 
         <div className="w-100 text-center mt-2">
-          Landing Page <Link to="components/Landing.js">Einloggen</Link>
+          Registrierung per Mail  <Link to="components/Mail.js">Per Mail</Link>
         </div>
+
+        <div className="w-100 text-center mt-2">
+          Neues Passwort  <Link to="components/New_password.js">Neu</Link>
+        </div>
+
 
       </Router>
 
 
-    </div>
+    </div >
 
   );
 }
-
 export default App;

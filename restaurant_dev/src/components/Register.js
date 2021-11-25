@@ -49,27 +49,6 @@ const Register = () => {
         dynamicLinkDomain: 'google.page.link'
     */};
 
-    const verify = async () => {
-        try {
-            const user = await sendSignInLinkToEmail(
-                auth,
-                registerEmail,
-                actionCodeSettings,
-            ).then(() => {
-                // The link was successfully sent. Inform the user.
-                // Save the email locally so you don't need to ask the user for it again
-                // if they open the link on the same device.
-                window.localStorage.setItem('emailForSignIn', registerEmail);
-            })
-
-
-            console.log(user);
-        } catch (error) {
-            console.log(error.message);
-        }
-    }
-
-
 
     const register = async () => {
         try {
@@ -77,33 +56,6 @@ const Register = () => {
                 auth,
                 registerEmail,
                 registerPassword
-            );
-            console.log(user);
-        } catch (error) {
-            console.log(error.message);
-        }
-
-    }
-
-    const login = async () => {
-        try {
-            const user = await signInWithEmailAndPassword(
-                auth,
-                loginEmail,
-                loginPassword
-            );
-            console.log(user);
-        } catch (error) {
-            console.log(error.message);
-        }
-
-    }
-
-    const neuesPasswort = async () => {
-        try {
-            updatePassword(
-                auth.currentUser,
-                loginPassword,
             );
             console.log(user);
         } catch (error) {
@@ -121,16 +73,9 @@ const Register = () => {
 
     return (
         <div>
-            <h1>E-Mail-Verification</h1>
-            <input type="text"
-                placeholder="E-Mail"
-                onChange={(event) => {
-                    setRegisterEmail(event.target.value);
-                }} />
 
-            <Button variant="primary" onClick={verify}>Send E-Mail</Button>
 
-            {/*<h1>Register</h1>
+            <h1>Register</h1>
             <input type="text"
                 placeholder="E-Mail"
                 onChange={(event) => {
@@ -144,7 +89,7 @@ const Register = () => {
                 }}
             />
             <Button variant="primary" onClick={register}>Register</Button>
-            */}
+
 
 
 
