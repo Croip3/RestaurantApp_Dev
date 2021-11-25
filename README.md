@@ -6,6 +6,7 @@
 - cd in RestaurantApp_Dev
 - npm install
 - npm install firebase
+- npm install react-bootstrap
 - npm install react-router-dom
 
 
