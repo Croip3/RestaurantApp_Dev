@@ -8,6 +8,8 @@ import { getAuth, isSignInWithEmailLink, signInWithEmailLink } from "firebase/au
 import Mail from './components/Mail';
 import New_password from './components/New_password';
 
+import RestaurantList from "./components/restaurant_listview/RestaurantList";
+
 const auth = getAuth();
 
 if (isSignInWithEmailLink(auth, window.location.href)) {
@@ -59,6 +61,11 @@ function App() {
           <Route path="components/Mail.js" element={<Mail />} />
           <Route path="components/New_password.js" element={<New_password />} />
 
+          <Route
+              path="/restaurants"
+              exact
+              element={<RestaurantList />}
+          ></Route>
 
         </Routes>
         <div cmssName="w-100 text-center mt-2">
@@ -80,10 +87,9 @@ function App() {
 
 
       </Router>
-
-
-    </div >
+    </div>
 
   );
+
 }
 export default App;
