@@ -2,19 +2,14 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAMrbhIR8lJRv2_rZKmzY-aIG4qZPI8pKY",
+ 
 
-  authDomain: "restaurant-authentication.firebaseapp.com",
-
-  projectId: "restaurant-authentication",
-
-  storageBucket: "restaurant-authentication.appspot.com",
-
-  messagingSenderId: "477340841738",
-
-  appId: "1:477340841738:web:453529d511fe7ff961acf3",
-
-  measurementId: "G-RDBT5GSYR9"
+  apiKey: "AIzaSyBiFWrlYmMb3nNsG42QNEcDJCeSHUHKjlk",
+  authDomain: "fir-e72aa.firebaseapp.com",
+  projectId: "fir-e72aa",
+  storageBucket: "fir-e72aa.appspot.com",
+  messagingSenderId: "1037939465902",
+  appId: "1:1037939465902:web:ba6c44c54ac3c2f049d73f"
 
   /* Hier eigene Daten aus 
   Firebase --> Projekteinstellungen --> SDK-Einrichtung und -Konfiguration
