@@ -74,7 +74,7 @@ function App() {
           ></Route>
 
         </Routes>
-        <div cmssName="w-100 text-center mt-2">
+        <div className="w-100 text-center mt-2">
           Möchten Sie sich registrieren?<Link to="components/Register.js">Registrieren</Link>
         </div>
 
