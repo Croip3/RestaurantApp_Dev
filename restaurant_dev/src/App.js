@@ -52,56 +52,56 @@ function App() {
   const auth = getAuth(); //Verbindung zu auth 
   const user = auth.currentUser; //user ist nun der aktuell einheloggte User
 
-  if (user) {
-    return (
 
-      <div className="App">
+  return (
 
-        <Router>
-          <Routes>
+    <div className="App">
 
-            <Route path="components/Login.js" element={<Login />} />
-            <Route path="components/Register.js" element={<Register />} />
-            <Route path="components/Mail.js" element={<Mail />} />
-            <Route path="components/New_password.js" element={<New_password />} />
-            < Route path="components/MagicButton.js" element={<MagicButton />} />
+      <Router>
+        <Routes>
 
-
-            <Route
-              path="/restaurants"
-              exact
-              element={<RestaurantList />}
-            ></Route>
-
-          </Routes>
-          <div cmssName="w-100 text-center mt-2">
-            Möchten Sie sich registrieren?<Link to="components/Register.js">Registrieren</Link>
-          </div>
+          <Route path="components/Login.js" element={<Login />} />
+          <Route path="components/Register.js" element={<Register />} />
+          <Route path="components/Mail.js" element={<Mail />} />
+          <Route path="components/New_password.js" element={<New_password />} />
+          < Route path="components/MagicButton.js" element={<MagicButton />} />
 
 
-          <div className="w-100 text-center mt-2">
-            Sie haben bereits ein Konto?<Link to="components/Login.js">Einloggen</Link>
-          </div>
+          <Route
+            path="/restaurants"
+            exact
+            element={<RestaurantList />}
+          ></Route>
 
-          <div className="w-100 text-center mt-2">
-            Registrierung per Mail  <Link to="components/Mail.js">Per Mail</Link>
-          </div>
-
-          <div className="w-100 text-center mt-2">
-            Neues Passwort  <Link to="components/New_password.js">Neu</Link>
-          </div>
-
-          <div className="w-100 text-center mt-2">
-            Magic Button  <Link to="components/MagicButton.js"> Magischer Button</Link>
-          </div>
+        </Routes>
+        <div cmssName="w-100 text-center mt-2">
+          Möchten Sie sich registrieren?<Link to="components/Register.js">Registrieren</Link>
+        </div>
 
 
+        <div className="w-100 text-center mt-2">
+          Sie haben bereits ein Konto?<Link to="components/Login.js">Einloggen</Link>
+        </div>
+
+        <div className="w-100 text-center mt-2">
+          Registrierung per Mail  <Link to="components/Mail.js">Per Mail</Link>
+        </div>
+
+        <div className="w-100 text-center mt-2">
+          Neues Passwort  <Link to="components/New_password.js">Neu</Link>
+        </div>
+
+        <div className="w-100 text-center mt-2">
+          Magic Button  <Link to="components/MagicButton.js"> Magischer Button</Link>
+        </div>
 
 
-        </Router >
-      </div >
 
-    );
 
-  }
-  export default App;
+      </Router >
+    </div >
+
+  );
+
+}
+export default App;

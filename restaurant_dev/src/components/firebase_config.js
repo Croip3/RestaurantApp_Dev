@@ -16,9 +16,7 @@ const firebaseConfig = {
 
   measurementId: "G-RDBT5GSYR9"
 
-  /* Hier eigene Daten aus 
-  Firebase --> Projekteinstellungen --> SDK-Einrichtung und -Konfiguration
-  --> const firebaseConfig einfügen */
+
 };
 
 

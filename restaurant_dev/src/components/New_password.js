@@ -1,5 +1,4 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate, Link } from "react-router-dom"
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button'
 import {
@@ -8,7 +7,7 @@ import {
     getAuth,
 }
     from 'firebase/auth';
-import { auth } from './firebase_config';
+
 
 const New_password = () => {
 
@@ -43,9 +42,7 @@ const New_password = () => {
     */};
 
 
-    const refresh = async () => {
-        window.location.reload();
-    }
+
 
 
     const neuesPasswort = async () => {
@@ -78,7 +75,7 @@ const New_password = () => {
                 onChange={(event) => {
                     setLoginPassword(event.target.value);
                 }} />
-            <Button variant="primary" onClick={neuesPasswort, refresh}>Neues Passwort</Button>
+            <Button variant="primary" onClick={neuesPasswort}>Neues Passwort</Button>
 
 
             <br></br>
