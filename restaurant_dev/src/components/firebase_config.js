@@ -11,9 +11,7 @@ const firebaseConfig = {
   messagingSenderId: "1037939465902",
   appId: "1:1037939465902:web:ba6c44c54ac3c2f049d73f"
 
-  /* Hier eigene Daten aus 
-  Firebase --> Projekteinstellungen --> SDK-Einrichtung und -Konfiguration
-  --> const firebaseConfig einfügen */
+
 };
 
 
