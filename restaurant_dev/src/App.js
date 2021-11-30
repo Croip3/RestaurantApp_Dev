@@ -1,16 +1,14 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { BrowserRouter as Router, Routes, Route, Navigate, Link, condition } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Link, } from "react-router-dom"
 import Login from './components/Login';
-import React, { useRef, useState } from "react"
 import Register from './components/Register';
 import { getAuth, isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth";
 import Mail from './components/Mail';
-import New_password from './components/New_password';
-
+import NewPassword from './components/NewPassword';
 import RestaurantList from "./components/restaurant_listview/RestaurantList";
 import MagicButton from './components/MagicButton';
-import NotLoggedIn from './components/NotLoggedIn';
+
 
 const auth = getAuth();
 
@@ -49,9 +47,6 @@ if (isSignInWithEmailLink(auth, window.location.href)) {
 
 
 function App() {
-  const auth = getAuth(); //Verbindung zu auth 
-  const user = auth.currentUser; //user ist nun der aktuell einheloggte User
-
 
   return (
 
@@ -63,7 +58,7 @@ function App() {
           <Route path="components/Login.js" element={<Login />} />
           <Route path="components/Register.js" element={<Register />} />
           <Route path="components/Mail.js" element={<Mail />} />
-          <Route path="components/New_password.js" element={<New_password />} />
+          <Route path="components/NewPassword.js" element={<NewPassword />} />
           < Route path="components/MagicButton.js" element={<MagicButton />} />
 
 
@@ -88,7 +83,7 @@ function App() {
         </div>
 
         <div className="w-100 text-center mt-2">
-          Neues Passwort  <Link to="components/New_password.js">Neu</Link>
+          Neues Passwort  <Link to="components/NewPassword.js">Neu</Link>
         </div>
 
         <div className="w-100 text-center mt-2">
