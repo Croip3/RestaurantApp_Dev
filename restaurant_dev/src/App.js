@@ -1,9 +1,11 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Routes, Route, Navigate, Link, condition } from "react-router-dom"
-import Login from './components/Login';
+import { GlobalStyle } from './globalStyles';
+import Login from './components/login/Login';
+import { LoginContainer } from './components/login/LoginElements';
 import React, { useRef, useState } from "react"
-import Register from './components/Register';
+import Register from './components/register/Register';
 import { getAuth, isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth";
 import Mail from './components/Mail';
 import New_password from './components/New_password';
@@ -55,26 +57,27 @@ function App() {
 
   return (
 
-    <div className="App">
+    <LoginContainer 
+    className="d-flex align-items-center justify-content-center"  
+    style={{ minHeight: "100vh" }}>
+      <div className="w-100" style={{ maxWidth: "400px" }}>
 
       <Router>
+      <GlobalStyle />
         <Routes>
-
-          <Route path="components/Login.js" element={<Login />} />
-          <Route path="components/Register.js" element={<Register />} />
-          <Route path="components/Mail.js" element={<Mail />} />
-          <Route path="components/New_password.js" element={<New_password />} />
-          < Route path="components/MagicButton.js" element={<MagicButton />} />
-
-
+          <Route path="/" element={<Navigate to="login"/>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/mail" element={<Mail />} />
+          <Route path="/new_password" element={<New_password />} />
+          <Route path="/magic_button" element={<MagicButton />} />
           <Route
             path="/restaurants"
             exact
             element={<RestaurantList />}
           ></Route>
-
         </Routes>
-        <div cmssName="w-100 text-center mt-2">
+        {/* <div className="w-100 text-center mt-2">
           Möchten Sie sich registrieren?<Link to="components/Register.js">Registrieren</Link>
         </div>
 
@@ -95,11 +98,12 @@ function App() {
           Magic Button  <Link to="components/MagicButton.js"> Magischer Button</Link>
         </div>
 
-
+ */}
 
 
       </Router >
     </div >
+    </LoginContainer>
 
   );
 
