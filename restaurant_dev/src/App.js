@@ -7,10 +7,10 @@ import Register from './components/Register';
 import { getAuth, isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth";
 import Mail from './components/Mail';
 import New_password from './components/New_password';
+
 import RestaurantList from "./components/restaurant_listview/RestaurantList";
 import MagicButton from './components/MagicButton';
-import firebase_config from './components/firebase_config'
-import { Button } from 'react-bootstrap';
+import NotLoggedIn from './components/NotLoggedIn';
 
 const auth = getAuth();
 
@@ -57,7 +57,6 @@ function App() {
 
     <div className="App">
 
-
       <Router>
         <Routes>
 
@@ -96,8 +95,10 @@ function App() {
           Magic Button  <Link to="components/MagicButton.js"> Magischer Button</Link>
         </div>
 
-      </Router >
 
+
+
+      </Router >
     </div >
 
   );

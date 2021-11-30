@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Container, Card } from "react-bootstrap";
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set, push, onValue } from "firebase/database";
+import { getDatabase, ref, set, push, onValue} from "firebase/database";
 
 const RestaurantList = () => {
     const [restaurantIds, setRestaurantIds] = useState([]);
@@ -17,7 +17,7 @@ const RestaurantList = () => {
         messagingSenderId: "256465085944",
         appId: "1:256465085944:web:346c00a78579aeb34fa20d",
     };
-
+    
     useEffect(() => {
         get()
     }, [])
@@ -42,7 +42,7 @@ const RestaurantList = () => {
 
     };
 
-    const restaurantList = restaurantIds.map((r) => (
+const restaurantList = restaurantIds.map((r) => (
         <Card className="mt-2 text-left" key={r}>
             <Card.Body>
                 <Card.Title className="text-left">{restaurantData[r].name}</Card.Title>
