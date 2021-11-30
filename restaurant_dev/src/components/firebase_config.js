@@ -1,4 +1,3 @@
-import { getDatabase } from "@firebase/database";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
@@ -6,8 +5,6 @@ const firebaseConfig = {
   apiKey: "AIzaSyAMrbhIR8lJRv2_rZKmzY-aIG4qZPI8pKY",
 
   authDomain: "restaurant-authentication.firebaseapp.com",
-
-  databaseURL: "https://restaurant-authentication-default-rtdb.europe-west1.firebasedatabase.app",
 
   projectId: "restaurant-authentication",
 
@@ -26,6 +23,3 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
-
-//db added export and url in config
-export const db = getDatabase()
