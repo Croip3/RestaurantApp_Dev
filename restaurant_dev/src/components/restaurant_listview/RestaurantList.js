@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Container, Card } from "react-bootstrap";
 import {db} from "../firebase_config"
-import {ref, set, push, onValue} from "firebase/database";
+import {ref, set, push, remove, onValue} from "firebase/database";
 
 const RestaurantList = () => {
     const [restaurantIds, setRestaurantIds] = useState([]);
@@ -25,12 +25,22 @@ const RestaurantList = () => {
         //const dbt = getDatabase()
         const restaurantsRef = ref(db, "restaurants/");
         onValue(restaurantsRef, (data) => {
+            console.log(data.val())
+
+            if(data.val() === null) return
+
             setRestaurantData(data.val())
             const newRestaurants = Object.keys(data.val())
             setRestaurantIds(newRestaurants)
         });
 
     };
+
+    const deleteRestaurantById = (id) => {
+        console.log("Delete: ", id)
+        const deleteRef = ref(db, "restaurants/" + id);
+        remove(deleteRef)
+    }
 
 const restaurantList = restaurantIds.map((r) => (
         <Card className="mt-2 text-left" key={r}>
@@ -40,6 +50,7 @@ const restaurantList = restaurantIds.map((r) => (
                 <Card.Text>
                     {restaurantData[r].city} <br /> {restaurantData[r].street}
                 </Card.Text>
+            <Button variant="danger" onClick={() => deleteRestaurantById(r)}>Löschen</Button>
             </Card.Body>
         </Card>
     ));
