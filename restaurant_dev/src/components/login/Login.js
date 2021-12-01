@@ -2,15 +2,14 @@ import React from 'react'
 import { useState } from 'react';
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import {
-    createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     onAuthStateChanged,
     signOut,
-    updatePassword,
 }
     from 'firebase/auth';
 import { auth } from '../../components/firebase_config'
 import { Link, useNavigate } from "react-router-dom";
+import { LoginContainer } from './LoginElements';
 
 const Login = () => {
 
@@ -23,27 +22,6 @@ const Login = () => {
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
     })
-
-    const actionCodeSettings = {
-        // URL gibt an, wo der Link in der E-Mail hinführt
-        // URL muss in der Firebase Console eingetragen werden
-        url: 'http://localhost:3000/',
-        // This must be true.
-        handleCodeInApp: true,
-        /*iOS: {
-            bundleId: 'com.google.ios'
-        },
-        android: {
-            packageName: 'com.google.android',
-            installApp: true,
-            minimumVersion: '12'
-        },
-        dynamicLinkDomain: 'google.page.link'
-    */};
-
-
-
-
 
 
 
@@ -72,8 +50,8 @@ const Login = () => {
  */
 
     return (
-        <>
-          <Card>
+        <LoginContainer  >   
+          <Card  >
           <Card.Body>
             <h2 className="text-center mb-4">Anmeldung</h2>
             <Form >
@@ -95,33 +73,12 @@ const Login = () => {
             </Form>
           </Card.Body>
         </Card>
+        
         <div className="w-100 text-center mt-2"  style={{ color: "white" }}>
           Neues Konto erstellen? <Link to ="/register" >Registrieren</Link>
         </div>
-
-          {/*  <h1>Login</h1>
-            <input type="text"
-                placeholder="E-Mail"
-                onChange={(event) => {
-                    setLoginEmail(event.target.value);
-                }} />
-            <input type="text"
-                placeholder="Password"
-                onChange={(event) => {
-                    setLoginPassword(event.target.value);
-                }} />
-            <Button variant="primary" onClick={login}>Login</Button>
-
-            <br></br>
-
-
-            <br></br>
-             <Button onClick={logOut}>Sign out</Button>
-
-            <h1>User logged in: </h1>
-            {user?.email} */}
-        </>
-    )
-}
+        </LoginContainer>
+    );
+};
 
 export default Login

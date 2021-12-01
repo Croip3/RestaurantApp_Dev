@@ -9,11 +9,9 @@ import {
     from 'firebase/auth';
 
 
-const New_password = () => {
+const NewPassword = () => {
 
-    const [registerEmail, setRegisterEmail] = useState('');
-    const [registerPassword, setRegisterPassword] = useState('');
-    const [loginEmail, setLoginEmail] = useState('');
+
     const [loginPassword, setLoginPassword] = useState('');
 
     const [user, setUser] = useState({});
@@ -23,26 +21,6 @@ const New_password = () => {
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
     })
-
-    const actionCodeSettings = {
-        // URL you want to redirect back to. The domain (www.example.com) for this
-        // URL must be in the authorized domains list in the Firebase Console.
-        url: 'http://localhost:3000',
-        // This must be true.
-        handleCodeInApp: true,
-        /*iOS: {
-            bundleId: 'com.google.ios'
-        },
-        android: {
-            packageName: 'com.google.android',
-            installApp: true,
-            minimumVersion: '12'
-        },
-        dynamicLinkDomain: 'google.page.link'
-    */};
-
-
-
 
 
     const neuesPasswort = async () => {
@@ -65,11 +43,7 @@ const New_password = () => {
         <div className="App">
 
             <h1> Neues Passwort </h1>
-            <input type="text"
-                placeholder="E-Mail"
-                onChange={(event) => {
-                    setLoginEmail(event.target.value);
-                }} />
+
             <input type="text"
                 placeholder="New Password"
                 onChange={(event) => {
@@ -89,4 +63,4 @@ const New_password = () => {
     )
 }
 
-export default New_password
+export default NewPassword

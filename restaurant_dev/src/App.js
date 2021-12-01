@@ -1,18 +1,17 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { BrowserRouter as Router, Routes, Route, Navigate, Link, condition } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Navigate, Link } from "react-router-dom"
 import { GlobalStyle } from './globalStyles';
 import Login from './components/login/Login';
-import { LoginContainer } from './components/login/LoginElements';
+import { AppContainer } from './components/login/LoginElements';
 import React, { useRef, useState } from "react"
 import Register from './components/register/Register';
 import { getAuth, isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth";
 import Mail from './components/Mail';
-import New_password from './components/New_password';
-
+import NewPassword from './components/NewPassword';
 import RestaurantList from "./components/restaurant_listview/RestaurantList";
 import MagicButton from './components/MagicButton';
-import NotLoggedIn from './components/NotLoggedIn';
+
 
 const auth = getAuth();
 
@@ -51,16 +50,13 @@ if (isSignInWithEmailLink(auth, window.location.href)) {
 
 
 function App() {
-  const auth = getAuth(); //Verbindung zu auth 
-  const user = auth.currentUser; //user ist nun der aktuell einheloggte User
-
 
   return (
 
-    <LoginContainer 
+    <AppContainer 
     className="d-flex align-items-center justify-content-center"  
     style={{ minHeight: "100vh" }}>
-      <div className="w-100" style={{ maxWidth: "400px" }}>
+      <div className="w-100" style={{ maxWidth: "max-width: 100%;max-height:40%;" }}>
 
       <Router>
       <GlobalStyle />
@@ -69,7 +65,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/mail" element={<Mail />} />
-          <Route path="/new_password" element={<New_password />} />
+          <Route path="/new_password" element={<NewPassword />} />
           <Route path="/magic_button" element={<MagicButton />} />
           <Route
             path="/restaurants"
@@ -91,7 +87,7 @@ function App() {
         </div>
 
         <div className="w-100 text-center mt-2">
-          Neues Passwort  <Link to="components/New_password.js">Neu</Link>
+          Neues Passwort  <Link to="components/NewPassword.js">Neu</Link>
         </div>
 
         <div className="w-100 text-center mt-2">
@@ -103,7 +99,7 @@ function App() {
 
       </Router >
     </div >
-    </LoginContainer>
+    </AppContainer>
 
   );
 

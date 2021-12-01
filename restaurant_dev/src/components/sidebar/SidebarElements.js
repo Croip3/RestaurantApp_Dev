@@ -1,6 +1,8 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { FaTimes } from 'react-icons/fa';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { FaSignOutAlt } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 
 export const SidebarContainer = styled.aside`
   position: fixed;
@@ -12,7 +14,7 @@ export const SidebarContainer = styled.aside`
   align-items: center;
   top: 0;
   transition: 0.3s ease-in-out;
-  right: ${({ isOpen }) => (isOpen ? '0' : '-1000px')};
+  right: ${({ isOpen }) => (isOpen ? "0" : "-1000px")};
   @media screen and (max-width: 400px) {
     width: 100%;
   }
@@ -80,4 +82,10 @@ export const SidebarRoute = styled(Link)`
     background: #fff;
     color: #010606;
   }
+`;
+export const Signout = styled(FaSignOutAlt)`
+  font-size: 2rem;
+`;
+export const Restaurants = styled(FaHome)`
+  font-size: 2rem;
 `;

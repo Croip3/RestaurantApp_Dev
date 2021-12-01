@@ -4,27 +4,16 @@ import { Form, Button, Card, Alert } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
 import {
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
     onAuthStateChanged,
     signOut,
-    updateCurrentUser,
-    updatePassword,
-    sendEmailVerification,
-    applyActionCode,
-    sendSignInLinkToEmail,
-    getAuth,
-    isSignInWithEmailLink,
-    signInWithEmailLink,
-    actionCodeSettings
 }
     from 'firebase/auth';
     import { auth } from '../../components/firebase_config';
+    import { LoginContainer } from '../login/LoginElements';
 const Register = () => {
 
     const [registerEmail, setRegisterEmail] = useState('');
     const [registerPassword, setRegisterPassword] = useState('');
-    const [loginEmail, setLoginEmail] = useState('');
-    const [loginPassword, setLoginPassword] = useState('');
     //const [newPassword, setNewPassword] = useState('');
 
     const [user, setUser] = useState({});
@@ -33,22 +22,7 @@ const Register = () => {
         setUser(currentUser);
     })
 
-    const actionCodeSettings = {
-        // URL you want to redirect back to. The domain (www.example.com) for this
-        // URL must be in the authorized domains list in the Firebase Console.
-        url: 'http://localhost:3000',
-        // This must be true.
-        handleCodeInApp: true,
-        /*iOS: {
-            bundleId: 'com.google.ios'
-        },
-        android: {
-            packageName: 'com.google.android',
-            installApp: true,
-            minimumVersion: '12'
-        },
-        dynamicLinkDomain: 'google.page.link'
-    */};
+
 
 
     const register = async () => {
@@ -73,7 +47,7 @@ const Register = () => {
 
 
     return (
-        <>
+        <LoginContainer>
         <Card>
           <Card.Body>
             <h2 className="text-center mb-4">Registrierung</h2>
@@ -121,7 +95,7 @@ const Register = () => {
 
             <h1>User logged in: </h1>
             {user?.email} */}
-        </>
+        </LoginContainer>
     )
 }
 

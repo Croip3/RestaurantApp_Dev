@@ -26,6 +26,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
-
-//db added export and url in config
 export const db = getDatabase()

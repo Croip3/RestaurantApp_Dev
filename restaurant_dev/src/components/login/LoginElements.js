@@ -1,12 +1,20 @@
 import styled from 'styled-components';
 import ImgBg from '../../images/pizza-3.jpg';
 
-export const LoginContainer = styled.div`
+export const AppContainer = styled.div`
   background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)),
     url(${ImgBg});
-  height: 100vh;
+  height: 100%;
   background-position: center;
   background-size: cover;
+`;
+
+export const LoginContainer = styled.div`
+
+  height: 50%;
+  max-width:400px;
+ margin:auto;
+  
 `;
 
 export const LoginContent = styled.div`
