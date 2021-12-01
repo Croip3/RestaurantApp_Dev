@@ -11,15 +11,29 @@ const RestaurantList = () => {
   const [restaurantIds, setRestaurantIds] = useState([]);
   const [restaurantData, setRestaurantData] = useState({});
   const [restaurantName, setRestaurantName] = useState("");
+  const [restaurantCity, setRestaurantCity] = useState("");
+  const [restaurantStreet, setRestaurantStreet] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleChange = (e) => {
+  const changeName = (e) => {
     setRestaurantName(e.target.value);
   };
+  const changeCity = (e) => {
+    setRestaurantCity(e.target.value);
+  };
+  const changeStreet = (e) => {
+    setRestaurantStreet(e.target.value);
+  };
+
+  const onSubmit = () => {
+      console.log("send to db")
+      writeRestauraurants(restaurantName, restaurantCity, restaurantStreet)
+  }
+
   useEffect(() => {
     get();
   }, []);
@@ -107,22 +121,19 @@ const RestaurantList = () => {
     <>
       <Navbar toggle={toggle} />
       <Sidebar isOpen={isOpen} toggle={toggle} />
-      <Button variant="primary" onClick={get}>
-        Aktualisieren
-      </Button>
-      <Button
+      {/*<Button
         variant="primary"
         disabled={restaurantsEmpty()}
         onClick={createRestaurants}
       >
         Restaurants anlegen (nur einmal drücken)
-      </Button>
-      <Button variant="primary" onClick={updateTest}>
+      </Button>*/}
+      {/*<Button variant="primary" onClick={updateTest}>
         Update Test
-      </Button>
+    </Button>*/}
       <Container>
         {restaurantList}
-        <form onSubmit={writeRestauraurants}>
+        <form onSubmit={onSubmit}>
           <Card className="mt-2 text-left">
             <Card.Body>
               <Card.Title className="text-left">
@@ -132,7 +143,7 @@ const RestaurantList = () => {
                   className="name-input"
                   value={restaurantName}
                   required
-                  onChange={handleChange}
+                  onChange={changeName}
                   style={{
                     borderLeft: "none",
                     borderRight: "none",
@@ -146,9 +157,9 @@ const RestaurantList = () => {
                   type="text"
                   placeholder="Stadt hinzufügen..."
                   className="name-input"
-                  value={restaurantName}
+                  value={restaurantCity}
                   required
-                  onChange={handleChange}
+                  onChange={changeCity}
                   style={{
                     borderLeft: "none",
                     borderRight: "none",
@@ -160,9 +171,9 @@ const RestaurantList = () => {
                   type="text"
                   placeholder="Straße hinzufügen..."
                   className="street-input"
-                  value={restaurantName}
+                  value={restaurantStreet}
                   required
-                  onChange={handleChange}
+                  onChange={changeStreet}
                   style={{
                     borderLeft: "none",
                     borderRight: "none",
@@ -173,8 +184,8 @@ const RestaurantList = () => {
             </Card.Body>
           </Card>
 
-          <div class="form-group mt-2">
-            <AddBtn class="btn btn-success btn-lg float-center" type="submit">
+          <div className="form-group mt-2">
+            <AddBtn className="btn btn-success btn-lg float-center" type="submit">
               <Add />
             </AddBtn>
           </div>
